@@ -199,12 +199,33 @@ body {
     color: var(--primary-color);
     margin-bottom: 1rem;
     transition: all 0.5s ease;
+    position: relative; /* Added for animation */
+
 }
 
 .hobby-card:hover .hobby-icon {
-    transform: rotate(15deg) scale(1.1);
+    animation: bounceIcon 0.8s ease;
     color: var(--secondary-color);
 }
+
+@keyframes bounceIcon {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    30% {
+        transform: translateY(-20px) scale(1.1);
+    }
+    50% {
+        transform: translateY(0) scale(1);
+    }
+    70% {
+        transform: translateY(-10px) scale(1.05);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
 
 .hobby-image-container {
     height: 200px;
@@ -372,4 +393,43 @@ footer {
     .hobby-image-placeholder {
         height: 180px;
     }
+}
+
+
+
+
+/* Add to style.css */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--light-text);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* For the hobbies grid layout */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
